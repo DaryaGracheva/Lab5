@@ -11,13 +11,15 @@ try :
     start = time.time()
     A = np.zeros((rows,rows),dtype = int)
     F = np.zeros((rows,rows), dtype = int)
+    
+    time0 = time.time()
 
     for i in range (rows):                                                                                              # формируем матрицу А с помощью генератора случайных чисел
         for j in range(rows):
             A[i][j] = np.random.randint(-10,10)
 
     time1 = time.time()
-    print("\nМатрица A: \n",A)
+    print("\nМатрица A: \n",A, "\nВремя вывода матрицы А:", time1 - time0)
 
     for i in range (rows):                                                                                              # формируем матрицу F, копируя из матрицы А
         for j in range(rows):
@@ -43,7 +45,7 @@ try :
         F[rows // 2 + rows % 2:rows, rows // 2 + rows % 2:rows] = A[0:rows // 2, 0:rows // 2]
 
     time2 = time.time()
-    print("\nМатрица F: \n", F)
+    print("\nМатрица F: \n", F, "\nВремя вывода матрицы F:", time2-time0)
 
     if np.linalg.det(A) == 0 or np.linalg.det(F) == 0:
         print("\nНельзя вычислить, поскольку матрица А или F вырождена")
